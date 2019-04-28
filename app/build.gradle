@@ -17,8 +17,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-}
+    testOptions.unitTests.includeAndroidResources = true
+    flavorDimensions "default"
+    productFlavors  {
+        local {
 
+        }
+        stagging {
+
+        }
+    }
+}
+ext {
+    mockitoVersion = '2.0.2'
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -30,12 +42,31 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
 
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    //Mockserver
+    implementation 'com.squareup.okhttp3:mockwebserver:3.14.1'
+
+    //Okhttp logging
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+    //android test
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.powermock:powermock-api-mockito2:1.7.1'
-    testImplementation 'org.powermock:powermock-module-junit4:1.7.1'
+    testImplementation "org.powermock:powermock-api-mockito2:${mockitoVersion}"
+    testImplementation "org.powermock:powermock-module-junit4:${mockitoVersion}"
+    testImplementation "org.powermock:powermock-module-junit4-rule:${mockitoVersion}"
+    testImplementation "org.powermock:powermock-classloading-xstream:${mockitoVersion}"
+
+    /*testCompile "org.powermock:powermock-module-junit4:1.6.6"
+    testCompile "org.powermock:powermock-module-junit4-rule:1.6.6"
+    testCompile "org.powermock:powermock-api-mockito2:1.6.6"
+    testCompile "org.powermock:powermock-classloading-xstream:1.6.6"*/
+    testImplementation 'org.robolectric:robolectric:4.2.1'
 
 }
 

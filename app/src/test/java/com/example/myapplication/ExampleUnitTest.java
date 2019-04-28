@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,9 +37,26 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
 @PrepareForTest({TimeUtil.class})
 public class ExampleUnitTest {
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static int a = 1;
 
     @Before
     public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+        a = 1;
+    }
+
+    @Test
+    public void change01() {
+        a = 2;
+    }
+
+
+    @Test
+    public void change02() {
+        a = 2;
     }
 
 
