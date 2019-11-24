@@ -1,0 +1,20 @@
+shared:
+    image: node:6
+
+jobs:
+    A:
+        steps:
+            - echo: echo test
+        requires: [~commit, ~pr]
+
+    # B will run after A
+    B:
+        steps:
+            - echo: echo test
+        requires: [A]
+
+    # C will run after B
+    C:
+        steps:
+            - echo: echo test
+        requires: [B]
