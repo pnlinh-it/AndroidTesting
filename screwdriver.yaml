@@ -5,6 +5,7 @@ jobs:
     A:
         steps:
             - echo: echo $PWD
+            - permission: chmod +x ./gradlew
             - build: ./gradlew check assemble
         requires: [~commit, ~pr]
 
