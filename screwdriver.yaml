@@ -1,5 +1,5 @@
 shared:
-    image: node:6
+    image: mreichelt/android
 
 jobs:
     A:
