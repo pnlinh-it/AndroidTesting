@@ -1,12 +1,13 @@
 shared:
-    image: mreichelt/android
+    image: opengamer/android-sdk-gradle-fastlane
 
 jobs:
     A:
         steps:
             - echo: echo $PWD
             - permission: chmod +x ./gradlew
-            - build: ./gradlew check assemble
+            #- build: ./gradlew check assemble
+            - fastlane: bundle exec fastlane build
         requires: [~commit, ~pr]
 
     # B will run after A
