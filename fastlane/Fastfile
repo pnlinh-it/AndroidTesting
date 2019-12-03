@@ -41,9 +41,9 @@ platform :android do
   # Add this to your Fastfile
   desc "Upload the APK to Slack channel"
   private_lane :upload_to_slack do |options|
-    file_path = lane_context[SharedValues::GRADLE_ALL_APK_OUTPUT_PATHS]
-    puts(file_path)
-    file_name = file_path.gsub(/\/.*\//,"")
+    #file_path = lane_context[SharedValues::GRADLE_ALL_APK_OUTPUT_PATHS]
+    #puts(file_path)
+    #file_name = file_path.gsub(/\/.*\//,"")
     sh "echo Uploading " + file_name + " to Slack"
     sh "curl https://slack.com/api/files.upload -F token=\"token\" -F channels=\"#channel\" -F title=\"" + file_name + "\" -F filename=\"" + file_name + "\" -F file=@" + file_path
   end
