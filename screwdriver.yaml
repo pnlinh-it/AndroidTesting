@@ -1,6 +1,5 @@
 shared:
     image: opengamer/android-sdk-gradle-fastlane
-    
 jobs:
     A:
         steps:
