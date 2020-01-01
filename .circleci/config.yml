@@ -15,4 +15,4 @@ jobs:
          command: sudo chmod +x ./gradlew
       - run:
           name: Download Dependencies
-          command: ./gradlew lint test
+          command: ./gradlew assembleDebug
