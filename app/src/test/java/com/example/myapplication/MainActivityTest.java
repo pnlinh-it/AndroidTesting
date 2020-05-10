@@ -48,6 +48,6 @@ public class MainActivityTest {
         ShadowLooper.runUiThreadTasksIncludingDelayedTasks();
         Assert.assertNotNull(mainActivity);
         int id = Whitebox.getInternalState(mainActivity, "id");
-        Assert.assertEquals(id, 12341);
+        Assert.assertEquals(id, 1234);
     }
 }
