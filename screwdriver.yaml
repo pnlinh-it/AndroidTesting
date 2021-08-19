@@ -6,7 +6,7 @@ jobs:
             - echo: echo $PWD
             - permission: chmod +x ./gradlew
             #- build: ./gradlew check assemble
-            - fastlane: bundle exec fastlane beta
+            - fastlane: ./gradlew assembleDebug
         requires: [~commit, ~pr]
 
     # B will run after A
