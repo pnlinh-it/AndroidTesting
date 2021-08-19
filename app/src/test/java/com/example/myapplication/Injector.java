@@ -1,19 +1,15 @@
 package com.example.myapplication;
 
-import com.example.myapplication.ClientService;
-import com.example.myapplication.MockServer;
-
+import okhttp3.Dispatcher;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import org.robolectric.android.util.concurrent.RoboExecutorService;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import okhttp3.Dispatcher;
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Injector {
     static ExecutorService  executorService1 = new RoboExecutorService();

@@ -5,36 +5,29 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.core.classloader.annotations.PrepareOnlyThisForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({TimeUtil.class})
+@PrepareForTest({TimeUtil.class, System.class, TestSpyUsingSystemStaticClass.class, FileUtils.class})
 public class ExampleUnitTest {
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static int a = 1;
@@ -102,6 +95,15 @@ public class ExampleUnitTest {
         //ArgumentMatchers.*
     }
 
+    //https://blog.csdn.net/x763795151/article/details/89320717
+    @Test
+    public void testSpyUsingSystemStaticClass() {
+        //PowerMockito.spy(System.class);
+        //  PowerMockito.when(System.currentTimeMillis()).thenReturn(-1L);
+        TestSpyUsingSystemStaticClass spy = new TestSpyUsingSystemStaticClass();
+        Long a = spy.getCurrentTime();
+    }
+
     @Test
     public void test_verify() {
         //https://www.baeldung.com/mockito-verify
@@ -109,8 +111,11 @@ public class ExampleUnitTest {
         mockedList.get(1);
         Mockito.verify(mockedList).get(Mockito.anyInt());
 
-        mockStatic(System.class);
-        when(System.currentTimeMillis()).thenReturn(100L);
+//        mockStatic(System.class);
+//        PowerMockito.when(System.currentTimeMillis()).thenReturn(100L);
+
+        PowerMockito.spy(System.class);
+        PowerMockito.when(System.currentTimeMillis()).thenReturn(100L);
 
         long currentTime = System.currentTimeMillis();
 

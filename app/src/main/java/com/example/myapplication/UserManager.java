@@ -3,6 +3,7 @@ package com.example.myapplication;
 import java.io.UnsupportedEncodingException;
 
 public class UserManager {
+
     public static volatile UserManager sInstance;
 
     public static UserManager getInstance() {

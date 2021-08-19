@@ -24,6 +24,8 @@ platform :android do
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
     gradle(task: "assembleDebug")
+
+
     upload_to_slack()
 
       #crashlytics

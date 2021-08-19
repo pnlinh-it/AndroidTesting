@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.mockwebserver.Dispatcher;
 import okhttp3.mockwebserver.MockResponse;
@@ -16,7 +15,7 @@ public class MockServer {
             @Override
             public MockResponse dispatch(RecordedRequest request) throws InterruptedException {
                 return new MockResponse()
-                        .setBodyDelay(10, TimeUnit.SECONDS)
+                       // .setBodyDelay(10, TimeUnit.SECONDS)
                         .setBody("{\"id\":1234}");
             }
         });
